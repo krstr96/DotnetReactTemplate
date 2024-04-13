@@ -11,6 +11,8 @@ public static class Program
         webApplication.UseDefaultFiles();
         webApplication.UseStaticFiles();
 
+        webApplication.MapGet("/api/hello-world", () => "Hello World!");
+
         webApplication.MapFallbackToFile("index.html");
 
         webApplication.Run();
