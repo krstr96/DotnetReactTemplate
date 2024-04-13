@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.824748">
+  <PropertyGroup>
+    <ShouldRunNpmInstall>true</ShouldRunNpmInstall>
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <PublishAssetsDirectory>wwwroot</PublishAssetsDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="**" Exclude="*.esproj;**\obj\**;**\node_modules\**" />
+  </ItemGroup>
+</Project>
