@@ -8,15 +8,28 @@ jobs:
   workflow:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
         id: setup-dotnet
         with:
           dotnet-version: 8
-      - run: echo 'dotnet version ${{ steps.setup-dotnet.outputs.dotnet-version }}'
-      - uses: actions/setup-node@v4
+      - name: Echo dotnet version
+        run: echo 'dotnet version ${{ steps.setup-dotnet.outputs.dotnet-version }}'
+      - name: Setup node
+        uses: actions/setup-node@v4
         id: setup-node
         with:
           node-version: 20
-      - run: echo 'node version ${{ steps.setup-node.outputs.node-version }}'
-      - run: dotnet publish
+      - name: Echo node version
+        run: echo 'node version ${{ steps.setup-node.outputs.node-version }}'
+      - name: Publish
+        working-directory: ./Backend
+        run: dotnet publish
+      - name: Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: Artifact
+          if-no-files-found: error
+          path: ./Backend/bin/Release/net8.0/publish/
