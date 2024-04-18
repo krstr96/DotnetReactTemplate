@@ -13,10 +13,10 @@ jobs:
         id: setup-dotnet
         with:
           dotnet-version: 8
-      - run: echo 'dotnet version ${{ steps.setup-dotnet.outputs.dotnet-version }}
+      - run: echo 'dotnet version ${{ steps.setup-dotnet.outputs.dotnet-version }}'
       - uses: actions/setup-node@v4
         id: setup-node
         with:
           node-version: 20
-      - run: echo 'node version ${{ steps.setup-node.outputs.node-version }}
+      - run: echo 'node version ${{ steps.setup-node.outputs.node-version }}'
       - run: dotnet publish
